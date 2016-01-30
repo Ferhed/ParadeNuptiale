@@ -12,6 +12,5 @@ public class benchScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 }

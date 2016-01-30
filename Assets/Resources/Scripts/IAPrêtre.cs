@@ -11,7 +11,7 @@ public class IAPrêtre : MonoBehaviour {
     public float timeInLookingState = 2f;
     public float timeInPrayingState = 10f;
 
-    GameObject[] players;
+    public GameObject[] players;
 
     Vector3 angleLeft;
     Vector3 angleRight;
@@ -25,7 +25,6 @@ public class IAPrêtre : MonoBehaviour {
     {
         PRAY,
         ROTATE,
-        ATTACK,
         LOOKING,
     }
 	// Use this for initialization
@@ -45,9 +44,6 @@ public class IAPrêtre : MonoBehaviour {
                 prayForTheBirdGod();
                 break;
             case PRIESTSTATE.ROTATE:
-                break;
-            case PRIESTSTATE.ATTACK:
-                attack();
                 break;
             case PRIESTSTATE.LOOKING:
                 seekingHotBoy();
@@ -79,13 +75,15 @@ public class IAPrêtre : MonoBehaviour {
 
         for (int i = 0; i < players.Length; i++)
         {
-            //faire la détection du mode twerk
-
-            Vector3 currentVector = players[i].transform.position - transform.position;
-            float angle = Vector3.Angle(transform.forward, currentVector);
-            if (angle < 15 && angle > -15)
+            if (players[i].GetComponent<playerScript>().state == playerScript.STATE.ISTWERKING)
             {
-                //joueur detecté
+
+                Vector3 currentVector = players[i].transform.position - transform.position;
+                float angle = Vector3.Angle(transform.forward, currentVector);
+                if (angle < 15 && angle > -15)
+                {
+                    players[i].GetComponent<playerScript>().launchStun();
+                }
             }
         }
 
@@ -150,11 +148,6 @@ public class IAPrêtre : MonoBehaviour {
         yield return null;
     }
 
-
-    void attack()
-    {
-        //stun le joueur
-    }
 
     void calculateAngle()
     {
