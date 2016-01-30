@@ -80,7 +80,7 @@ public class IAPrêtre : MonoBehaviour {
 
                 Vector3 currentVector = players[i].transform.position - transform.position;
                 float angle = Vector3.Angle(transform.forward, currentVector);
-                if (angle < 15 && angle > -15)
+                if (angle < 20 && angle > -20)
                 {
                     players[i].GetComponent<playerScript>().launchStun();
                 }

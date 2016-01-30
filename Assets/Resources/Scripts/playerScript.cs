@@ -6,14 +6,14 @@ public class playerScript : MonoBehaviour
 
     public float speed = 10f;
     public float deadZone = 0.5f;
-    public float gravity = 20.0f;
+    public float gravity = 50f;
     public float radiusDetection = 1f;
 
     public float delayEndStun;
     public float timeStuned;
     public float timeTwerking = 1f;
 
-    GameObject confessionnal;
+    public GameObject confessionnal;
     public int playerNumber;
     float cdTwerk;
 
@@ -43,7 +43,7 @@ public class playerScript : MonoBehaviour
 
         delayEndStun = 1.0f;
         timeStuned = 0.0f;
-
+        confessionnal = GameManager.Instance.confessional[playerNumber-1];
 
 	    state = STATE.NARMOL;
 	}
@@ -92,7 +92,6 @@ public class playerScript : MonoBehaviour
 
         if (Input.GetAxis("L_XAxis_" + playerNumber) < -deadZone)
         {
-            Debug.Log(gameObject.name);
             move = true;
         }
         else if (Input.GetAxis("L_XAxis_" + playerNumber) > deadZone)

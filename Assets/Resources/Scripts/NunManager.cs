@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class NunManager : MonoBehaviour {
 
-    List<GameObject> nunList;
+    public List<GameObject> nunList;
     public GameObject[] bench;
     public GameObject[] spawners;
 
@@ -44,16 +44,10 @@ public class NunManager : MonoBehaviour {
 
             nunList.Add(currentNun);
 
-            if (currentNun)
-            {
-                Debug.Log("nun");
-            }
             currentBench.GetComponent<benchScript>().nun = currentNun; 
-            if (currentBench.GetComponent<benchScript>().nun)
-            {
-                Debug.Log("bench");
-            }
             currentNun.GetComponent<NunScript>().goToTheBench(currentBench);
+            currentNun.GetComponent<NunScript>().bench = currentBench;
+            currentNun.GetComponent<NunScript>().NM = this;
         }
     }
 }
