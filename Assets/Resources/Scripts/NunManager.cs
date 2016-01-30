@@ -40,7 +40,7 @@ public class NunManager : MonoBehaviour {
             {
                 currentBench = bench[Random.Range(0, bench.Length)];
             }
-            GameObject currentNun = Instantiate((Resources.Load("Prefab/Nun", typeof(GameObject))), spawners[Random.Range(0, spawners.Length)].transform.position, Quaternion.identity) as GameObject;
+            GameObject currentNun = Instantiate((Resources.Load("Prefabs/Nun", typeof(GameObject))), spawners[Random.Range(0, spawners.Length)].transform.position, Quaternion.identity) as GameObject;
 
             nunList.Add(currentNun);
 
